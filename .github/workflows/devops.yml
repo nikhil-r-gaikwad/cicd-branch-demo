@@ -30,8 +30,8 @@ jobs:
             cd /home/ec2-user/node-cicd-demo/cicd-branch-demo
 
             echo "1. Getting latest code..."
-            git fetch origin main
-            git reset --hard origin/main
+            git fetch origin QA-Team
+            git reset --hard origin/QA-Team
             git clean -fd
 
             echo "2. Checking deployed commit..."
