@@ -3,7 +3,7 @@ name: Deploy Node.js App
 on:
   push:
     branches:
-      - Dev-Team
+      - QA-Team
 
 jobs:
   deploy:
@@ -17,9 +17,9 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ secrets.Dev_EC2_HOST }}
+          host: ${{ secrets.QA_EC2_HOST }}
           username: ec2-user
-          key: ${{ secrets.Dev_EC2_SSH_KEY }}
+          key: ${{ secrets.QA_EC2_SSH_KEY }}
           script: |
             set -e
 
@@ -30,8 +30,8 @@ jobs:
             cd /home/ec2-user/node-cicd-demo/cicd-branch-demo
 
             echo "1. Getting latest code..."
-            git fetch origin Dev-Team
-            git reset --hard origin/Dev-Team
+            git fetch origin QA-Team
+            git reset --hard origin/QA-Team
             git clean -fd
 
             echo "2. Checking deployed commit..."
