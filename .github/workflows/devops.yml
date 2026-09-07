@@ -3,7 +3,7 @@ name: Deploy Node.js App
 on:
   push:
     branches:
-      - QA-Team
+      - main
 
 jobs:
   deploy:
@@ -17,9 +17,9 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ secrets.QA_EC2_HOST }}
+          host: ${{ secrets.PROD_EC2_HOST }}
           username: ec2-user
-          key: ${{ secrets.QA_EC2_SSH_KEY }}
+          key: ${{ secrets.PROD_EC2_SSH_KEY }}
           script: |
             set -e
 
